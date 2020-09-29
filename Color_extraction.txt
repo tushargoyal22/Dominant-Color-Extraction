@@ -1,0 +1,63 @@
+Description -->
+
+Dominant Color Extraction using Unsupervised Learning Algorithm -->
+----------------------------------------------------------------
+• Project aims to extract most dominant colours from an image using k-means clustering algorithm.
+• Further Reassigned each of the pixels of image to the closest of k dominant colors extracted and
+hence lead to partitions of an image having similar visual experiance
+• Libraries - Numpy, Matplotlib, OpenCV
+
+Motivation --> 
+----------
+
+I thought to write some programme and build an interface  that would help  me to pull out a set of colors from given image, and perform this task in such a manner that it seems natural and takes human perception into consideration.
+A color scheme can often sum up the 'vibe' of entire image , so I thought it will be an helpful thing to be able to do.
+So, I thought some ways that i could do this.I devised some quite simple algorithms that could perform the desired task,like,divide the image regularly into chunks and output the arithmetic mean color of each of these parts.Then,I quickly realised that this problem statement had been already solved in the general case, and in a manner that it will perform the results quite excellently, that is K-Means Clustering algorithm.
+
+K-means clustering is well known unsupervised learning clustering algorithm , with this a set of data points can be divided into several disjoint subsets where the points in each subset are close to each other according to some metric we decide. A common metric that we use is Euclidean distance function. The ‘k’ in K-Means algorithm  refers to the number of clusters desired in the final output. It clearly turns out that this approach is exactly what we need for our task to  divide our image into a set of colours.
+
+My case
+---------
+
+In our case, the data points are colours, and the distance metric is some measure of how different two colours are. My task is to group the colours of image into a desired number of containers, and then calculate the mean colour of each container. Using the mean metric seems like a fairly good choice because we  can imagine blurring our eyes whilst looking at the different colour clusters, and seeing a mean colour for each. However, we could instead use median or any other statistical measure and possibly get a better result.
+
+Application →
+
+So by this, I reassign each pixel to the closest of K-Colors, leading to segmentation.
+
+Segmentation divides our image into parts having similar  appearance .
+So this kind of technique can be used for image compression as well but at the loss of information surely
+So if we want to extract some background or maybe to group all background pixels into one colour and if they are similar then we can use this technique.
+
+
+Pseudo code for K-Means Algorithm used in project
+--------------------------------------------------
+
+def fit(data, k=2, max_iter=100):
+
+	means = []
+	#randomly initialise the means
+
+	for i in range(k):
+		means.append(data[i])
+
+
+	for i in range(max_iter):
+		# assign the data points to cluster they belong to 
+		#create empty clusters
+		clusters = []
+
+		for j in range(k):
+			clusters.append([])
+
+		for point in data:
+			#find distance to all the mean values
+			# find the min distance
+			# find the mean for which we got the minimum distance --> 1
+			#add this point to cluster 1
+
+		# calculate the new mean values
+
+		for j in range(k):
+			new_mean = average(clusters[j])
+			means[j] = new_mean
